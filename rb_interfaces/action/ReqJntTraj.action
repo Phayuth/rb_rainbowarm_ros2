@@ -1,0 +1,8 @@
+trajectory_msgs/JointTrajectory jntseq
+float64 spd
+float64 acc
+---
+bool success
+string message
+---
+float64 progression

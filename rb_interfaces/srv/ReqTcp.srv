@@ -1,0 +1,7 @@
+geometry_msgs/PoseStamped tcppose
+uint64 movetype #0:move at TCP using MoveL, 1:move at Joint using MoveJ
+float64 spd
+float64 acc
+---
+bool success
+string message

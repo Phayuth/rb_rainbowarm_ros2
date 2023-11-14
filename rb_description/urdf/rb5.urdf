@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<robot name="rb5">
+  
+    <material name="grey">
+        <color rgba="0.2 0.2 0.2 1.0" />
+    </material>
+  
+
+    <!--======================= Links =========================-->
+    <!-- Body Base -->
+    <link name="Body_Base">
+        <visual>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_1_base.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_1_base.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <!-- Body Module 1 -->
+    <link name="Body_Module_1">
+        <visual>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_2_module_1.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 0" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_2_module_1.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <!-- Body Module 2 -->
+    <link name="Body_Module_2">
+        <visual>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.1692" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_3_module_2.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.1692" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_3_module_2.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <!-- Body Pipe 1 -->
+    <link name="Body_Pipe_1">
+        <visual>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.1692" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_4_pipe_1.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.1692" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_4_pipe_1.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <!-- Body Module 3 -->
+    <link name="Body_Module_3">
+        <visual>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.1692" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_5_module_3.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.1692" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_5_module_3.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <!-- Body Module Dummy -->
+    <link name="Body_Module_Dummy">
+        <visual>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.5942" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_6_module_dummy.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.5942" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_6_module_dummy.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <!-- Body Pipe 2 -->
+    <link name="Body_Pipe_2">
+        <visual>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.5942" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_7_pipe_2.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.5942" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_7_pipe_2.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <!-- Body Module 4 -->
+    <link name="Body_Module_4">
+        <visual>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.5942" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_8_module_4.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.5942" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_8_module_4.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <!-- Body Module 5 -->
+    <link name="Body_Module_5">
+        <visual>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.9862" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_9_module_5.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.9862" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_9_module_5.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <!-- Body Module 6 -->
+    <link name="Body_Module_6">
+        <visual>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0.1107 -0.9862" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_10_module_6.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0.1107 -0.9862" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_10_module_6.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <!-- Body Tool Flange -->
+    <link name="Body_Tool_Flange">
+        <visual>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0.1107 -1.0969" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_11_tool_flange.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+            <material name="grey" />
+        </visual>
+        <collision>
+            <origin rpy="0 0 -1.57079632679" xyz="0 0.1107 -1.0969" />
+            <geometry>
+                <mesh filename="package://rb_description/meshes/rb5/collision/_11_tool_flange.stl" scale="0.001 0.001 0.001"/>
+            </geometry>
+        </collision>
+    </link>
+    <link name="Tool_Center_Point">
+        <visual>
+            <origin rpy="0 0 0" xyz="0.1107 0 -1.0969" />
+            <geometry>
+                <box size="0.001 0.001 0.001" />
+            </geometry>
+            <material name="grey" />
+        </visual>
+    </link>
+
+
+    <!--======================= Joints =========================-->
+    <joint name="base" type="revolute">
+        <parent link="Body_Base" />
+        <child link="Body_Module_1" />
+        <origin rpy="0 0 0" xyz="0 0 0" />
+        <axis xyz="0 0 1" />
+        <limit effort="10.0" lower="-6.28318530718" upper="6.28318530718" velocity="2.5" />
+    </joint>
+    <joint name="shoulder" type="revolute">
+        <parent link="Body_Module_1" />
+        <child link="Body_Module_2" />
+        <origin rpy="0 0 0" xyz="0 0 0.1692" />
+        <axis xyz="0 1 0" />
+        <limit effort="10.0" lower="-6.28318530718" upper="6.28318530718" velocity="2.5" />
+    </joint>
+    <joint name="module2_to_pipe1" type="fixed">
+        <parent link="Body_Module_2" />
+        <child link="Body_Pipe_1" />
+        <origin rpy="0 0 0" xyz="0 0 0" />
+    </joint>
+    <joint name="pipe1_to_module3" type="fixed">
+        <parent link="Body_Pipe_1" />
+        <child link="Body_Module_3" />
+        <origin rpy="0 0 0" xyz="0 0 0" />
+    </joint>
+    <joint name="elbow" type="revolute">
+        <parent link="Body_Module_3" />
+        <child link="Body_Module_Dummy" />
+        <origin rpy="0 0 0" xyz="0 0 0.425" />
+        <axis xyz="0 1 0" />
+        <limit effort="10.0" lower="-2.88" upper="2.88" velocity="2.5" />
+    </joint>
+    <joint name="moduled_to_pipe2" type="fixed">
+        <parent link="Body_Module_Dummy" />
+        <child link="Body_Pipe_2" />
+        <origin rpy="0 0 0" xyz="0 0 0" />
+    </joint>
+    <joint name="Pipe2_to_Module4" type="fixed">
+        <parent link="Body_Pipe_2" />
+        <child link="Body_Module_4" />
+        <origin rpy="0 0 0" xyz="0 0 0" />
+    </joint>
+    <joint name="wrist1" type="revolute">
+        <parent link="Body_Module_4" />
+        <child link="Body_Module_5" />
+        <origin rpy="0 0 0" xyz="0 0 0.392" />
+        <axis xyz="0 1 0" />
+        <limit effort="10.0" lower="-6.28318530718" upper="6.28318530718" velocity="2.5" />
+    </joint>
+    <joint name="wrist2" type="revolute">
+        <parent link="Body_Module_5" />
+        <child link="Body_Module_6" />
+        <origin rpy="0 0 0" xyz="0 -0.1107 0" />
+        <axis xyz="0 0 1" />
+        <limit effort="10.0" lower="-6.28318530718" upper="6.28318530718" velocity="2.5" />
+    </joint>
+    <joint name="wrist3" type="revolute">
+        <parent link="Body_Module_6" />
+        <child link="Body_Tool_Flange" />
+        <origin rpy="0 0 0" xyz="0 0 0.1107" />
+        <axis xyz="0 1 0" />
+        <limit effort="10.0" lower="-6.28318530718" upper="6.28318530718" velocity="2.5" />
+    </joint>
+    <joint name="Tool_Flange" type="fixed">
+        <parent link="Body_Tool_Flange" />
+        <child link="Tool_Center_Point" />
+        <origin rpy="0 0 0" xyz="0 -0.0967 0" />
+        <axis xyz="0 0 0" />
+    </joint>
+
+</robot>

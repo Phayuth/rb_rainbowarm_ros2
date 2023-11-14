@@ -1,0 +1,10 @@
+std_msgs/Header header
+geometry_msgs/PoseStamped[] tcpseq
+float64 spd
+float64 acc
+uint64 movetype
+---
+bool success
+string message
+---
+float64 progression

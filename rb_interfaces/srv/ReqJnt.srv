@@ -1,0 +1,6 @@
+sensor_msgs/JointState jntstate
+float64 spd
+float64 acc
+---
+bool success
+string message
