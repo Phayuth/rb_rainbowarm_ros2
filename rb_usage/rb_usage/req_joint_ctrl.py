@@ -1,6 +1,6 @@
 import rclpy
 from rclpy.node import Node
-
+import numpy as np
 from rb_interfaces.srv import ReqJnt
 
 
@@ -15,9 +15,9 @@ class JointCtrlCall(Node):
 
     def send_request(self):
         req = ReqJnt.Request()
-        req.jntstate.position = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-        req.spd = 1.0
-        req.acc = 1.0
+        req.jntstate.position = np.deg2rad([0.0, 0.0, 0.0, 0.0, 0.0, 0.0]).tolist()
+        req.spd = -1.0
+        req.acc = 5.0
         self.future = self.jntctrl.call_async(req)
 
 

@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
 
 <robot name="rb5">
-  
+
     <material name="grey">
         <color rgba="0.2 0.2 0.2 1.0" />
     </material>
-  
 
     <!--======================= Links =========================-->
     <!-- Body Base -->
@@ -13,7 +12,7 @@
         <visual>
             <origin rpy="0 0 -1.57079632679" xyz="0 0 0" />
             <geometry>
-                <mesh filename="package://rb_description/meshes/rb5/collision/_1_base.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://rb_description/meshes/rb5/visual/_1_base.dae" />
             </geometry>
             <material name="grey" />
         </visual>
@@ -29,7 +28,7 @@
         <visual>
             <origin rpy="0 0 -1.57079632679" xyz="0 0 0" />
             <geometry>
-                <mesh filename="package://rb_description/meshes/rb5/collision/_2_module_1.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://rb_description/meshes/rb5/visual/_2_module_1.dae" />
             </geometry>
             <material name="grey" />
         </visual>
@@ -45,7 +44,7 @@
         <visual>
             <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.1692" />
             <geometry>
-                <mesh filename="package://rb_description/meshes/rb5/collision/_3_module_2.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://rb_description/meshes/rb5/visual/_3_module_2.dae"/>
             </geometry>
             <material name="grey" />
         </visual>
@@ -61,7 +60,7 @@
         <visual>
             <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.1692" />
             <geometry>
-                <mesh filename="package://rb_description/meshes/rb5/collision/_4_pipe_1.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://rb_description/meshes/rb5/visual/_4_pipe_1.dae" />
             </geometry>
             <material name="grey" />
         </visual>
@@ -77,7 +76,7 @@
         <visual>
             <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.1692" />
             <geometry>
-                <mesh filename="package://rb_description/meshes/rb5/collision/_5_module_3.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://rb_description/meshes/rb5/visual/_5_module_3.dae" />
             </geometry>
             <material name="grey" />
         </visual>
@@ -93,7 +92,7 @@
         <visual>
             <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.5942" />
             <geometry>
-                <mesh filename="package://rb_description/meshes/rb5/collision/_6_module_dummy.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://rb_description/meshes/rb5/visual/_6_module_dummy.dae" />
             </geometry>
             <material name="grey" />
         </visual>
@@ -109,7 +108,7 @@
         <visual>
             <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.5942" />
             <geometry>
-                <mesh filename="package://rb_description/meshes/rb5/collision/_7_pipe_2.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://rb_description/meshes/rb5/visual/_7_pipe_2.dae" />
             </geometry>
             <material name="grey" />
         </visual>
@@ -125,7 +124,7 @@
         <visual>
             <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.5942" />
             <geometry>
-                <mesh filename="package://rb_description/meshes/rb5/collision/_8_module_4.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://rb_description/meshes/rb5/visual/_8_module_4.dae" />
             </geometry>
             <material name="grey" />
         </visual>
@@ -141,7 +140,7 @@
         <visual>
             <origin rpy="0 0 -1.57079632679" xyz="0 0 -0.9862" />
             <geometry>
-                <mesh filename="package://rb_description/meshes/rb5/collision/_9_module_5.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://rb_description/meshes/rb5/visual/_9_module_5.dae"/>
             </geometry>
             <material name="grey" />
         </visual>
@@ -157,7 +156,7 @@
         <visual>
             <origin rpy="0 0 -1.57079632679" xyz="0 0.1107 -0.9862" />
             <geometry>
-                <mesh filename="package://rb_description/meshes/rb5/collision/_10_module_6.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://rb_description/meshes/rb5/visual/_10_module_6.dae" />
             </geometry>
             <material name="grey" />
         </visual>
@@ -173,7 +172,7 @@
         <visual>
             <origin rpy="0 0 -1.57079632679" xyz="0 0.1107 -1.0969" />
             <geometry>
-                <mesh filename="package://rb_description/meshes/rb5/collision/_11_tool_flange.stl" scale="0.001 0.001 0.001"/>
+                <mesh filename="package://rb_description/meshes/rb5/visual/_11_tool_flange.dae" />
             </geometry>
             <material name="grey" />
         </visual>

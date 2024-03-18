@@ -1,6 +1,5 @@
 from rainbow import cobot
 from time import sleep
-
 import numpy as np
 from scipy.spatial.transform import Rotation as R
 
@@ -9,12 +8,11 @@ from geometry_msgs.msg import PoseStamped, Point, Quaternion
 
 from rb_interfaces.action import ReqJntTraj
 
-# NOTE : ALL MEASUREMENT IS IN [Millimeter] and [Degree] for NOW
 
 class RBRobotROS2Bridge:
 
-    def __init__(self) -> None:
-        RBRobotROS2Bridge.init_robot('192.168.0.201')
+    def __init__(self, ip) -> None:
+        RBRobotROS2Bridge.init_robot(ip)
 
     def init_robot(ip):
         cobot.ToCB(ip)
@@ -51,21 +49,24 @@ class RBRobotROS2Bridge:
         cobot.DisConnectToCB()
         print('Robot is [Disconnected]')
 
-    def get_joint_state_msg():
+    def get_joint_state_msg(timenow):
         jointValue = cobot.GetCurrentJoint()
         jointMsg = JointState()
-        jointMsg.name = ['j0', 'j1', 'j2', 'j3', 'j4', 'j5']
-        jointMsg.position = [jointValue.j0, jointValue.j1, jointValue.j2, jointValue.j3, jointValue.j4, jointValue.j5] # in degree
+        jointMsg.header.stamp = timenow
+        jointMsg.name = ["base", "shoulder", "elbow", "wrist1", "wrist2", "wrist3"]
+        jointMsg.position = np.deg2rad([jointValue.j0, jointValue.j1, jointValue.j2, jointValue.j3, jointValue.j4, jointValue.j5]).tolist()
         return jointMsg
 
-    def get_tcp_state_msg():
-        tcpValue = cobot.GetCurrentTCP() # in mm, degree
+    def get_tcp_state_msg(timenow):
         poseMsg = PoseStamped()
-        poseMsg.header.frame_id = 'base_link'
+        poseMsg.header.stamp = timenow
+        poseMsg.header.frame_id = 'Body_Base'
+        tcpValue = cobot.GetCurrentTCP() # in mm, degree
+        t = (0.001*np.array([tcpValue.x, tcpValue.y, tcpValue.z])).tolist()
         r = np.array([tcpValue.rx, tcpValue.ry, tcpValue.rz])
-        rpy = R.from_euler('zyx', r, degrees=True)
+        rpy = R.from_euler('xyz', r, degrees=True)
         q = rpy.as_quat()
-        poseMsg.pose.position = Point(x=tcpValue.x, y=tcpValue.y, z=tcpValue.z)
+        poseMsg.pose.position = Point(x=t[0], y=t[1], z=t[2])
         poseMsg.pose.orientation = Quaternion(x=q[0], y=q[1], z=q[2], w=q[3])
         return poseMsg
 
@@ -81,7 +82,7 @@ class RBRobotROS2Bridge:
         spd = request.spd
         acc = request.acc
         r = R.from_quat([rqqx, rqqy, rqqz, rqqw])
-        rpy = r.as_euler('zyx', degrees=True)
+        rpy = r.as_euler('xyz', degrees=True)
 
         # TODO : Check for limit and stuff
         inLimit = True
@@ -98,7 +99,7 @@ class RBRobotROS2Bridge:
         return response
 
     def req_joint(request, response):
-        jointReq = np.array(request.jntstate.position)
+        jointReq = np.rad2deg(request.jntstate.position)
         spd = request.spd
         acc = request.acc
 
@@ -120,7 +121,7 @@ class RBRobotROS2Bridge:
 
         cobot.MoveJB_Clear()
         for jntpoint in req:
-            position = jntpoint.positions
+            position = np.rad2deg(jntpoint.positions)
             cobot.MoveJB_Add(position[0], position[1], position[2], position[3], position[4], position[5])
         cobot.MoveJB_Run(spd, acc)
 
@@ -158,7 +159,7 @@ class RBRobotROS2Bridge:
             rqqz = tcp.pose.orientation.z
             rqqw = tcp.pose.orientation.w
             r = R.from_quat([rqqx, rqqy, rqqz, rqqw])
-            rpy = r.as_euler('zyx', degrees=True)
+            rpy = r.as_euler('xyz', degrees=True)
             cobot.MoveITPL_Add(x, y, z, rpy[0], rpy[1], rpy[2], spd)
         cobot.MoveITPL_Run(acc, movetype)
 
@@ -172,13 +173,13 @@ class RBRobotROS2Bridge:
         return result
 
     def get_itpl_movetype(index):
-        movetype = [cobot.ITPL_RTYPE.INTENDED, 
-                    cobot.ITPL_RTYPE.CONSTANT, 
-                    cobot.ITPL_RTYPE.RESERVED1, 
-                    cobot.ITPL_RTYPE.SMOOTH, 
-                    cobot.ITPL_RTYPE.RESERVED2, 
-                    cobot.ITPL_RTYPE.CA_INTENDED, 
-                    cobot.ITPL_RTYPE.CA_CONSTANT, 
-                    cobot.ITPL_RTYPE.RESERVED3, 
+        movetype = [cobot.ITPL_RTYPE.INTENDED,
+                    cobot.ITPL_RTYPE.CONSTANT,
+                    cobot.ITPL_RTYPE.RESERVED1,
+                    cobot.ITPL_RTYPE.SMOOTH,
+                    cobot.ITPL_RTYPE.RESERVED2,
+                    cobot.ITPL_RTYPE.CA_INTENDED,
+                    cobot.ITPL_RTYPE.CA_CONSTANT,
+                    cobot.ITPL_RTYPE.RESERVED3,
                     cobot.ITPL_RTYPE.CA_SMOOTH]
         return movetype[index]
