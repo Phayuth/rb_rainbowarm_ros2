@@ -1,5 +1,4 @@
-std_msgs/Header header
-geometry_msgs/PoseStamped[] tcpseq
+geometry_msgs/Pose[] tcpseq
 float64 spd
 float64 acc
 uint64 movetype

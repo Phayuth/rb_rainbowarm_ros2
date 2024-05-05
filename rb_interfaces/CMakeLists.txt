@@ -29,6 +29,7 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/ReqTcp.srv"
   "srv/ReqJnt.srv"
+  "action/ReqTcpTraj.action"
   "action/ReqJntTraj.action"
   DEPENDENCIES geometry_msgs sensor_msgs trajectory_msgs # Add packages that above messages depend on, in this case geometry_msgs for Sphere.msg
 )

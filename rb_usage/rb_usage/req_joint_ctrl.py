@@ -15,8 +15,8 @@ class JointCtrlCall(Node):
 
     def send_request(self):
         req = ReqJnt.Request()
-        req.jntstate.position = np.deg2rad([0.0, 0.0, 0.0, 0.0, 0.0, 0.0]).tolist()
-        req.spd = -1.0
+        req.jntstate.position = [-1.5707963267948966, -0.5235987755982988, 2.2689280275926285, -0.8726646259971648, 1.5707963267948966, 0.0]
+        req.spd = 1.0
         req.acc = 5.0
         self.future = self.jntctrl.call_async(req)
 
