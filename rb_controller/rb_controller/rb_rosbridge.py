@@ -20,7 +20,14 @@ class RBRobotROS2Bridge:
         self.init_robot(ip)
 
         # properties
-        self.jointNames = ["base", "shoulder", "elbow", "wrist1", "wrist2", "wrist3"]
+        self.jointNames = [
+            "base",
+            "shoulder",
+            "elbow",
+            "wrist1",
+            "wrist2",
+            "wrist3",
+        ]
         self.eulerOrder = "xyz"
         self.baseName = "Body_Base"
 
@@ -64,7 +71,16 @@ class RBRobotROS2Bridge:
         jointMsg.header.stamp = timenow
         jointMsg.name = self.jointNames
         jointValue = cobot.GetCurrentJoint()
-        jointMsg.position = np.deg2rad([jointValue.j0, jointValue.j1, jointValue.j2, jointValue.j3, jointValue.j4, jointValue.j5]).tolist()
+        jointMsg.position = np.deg2rad(
+            [
+                jointValue.j0,
+                jointValue.j1,
+                jointValue.j2,
+                jointValue.j3,
+                jointValue.j4,
+                jointValue.j5,
+            ]
+        ).tolist()
         return jointMsg
 
     def get_tcp_state_msg(self, timenow):
@@ -105,7 +121,9 @@ class RBRobotROS2Bridge:
             response.message = "Request [Successful], Robot should be [MOVING]"
         else:
             response.success = False
-            response.message = "Request [Failed], Request Value is [outside of limit]"
+            response.message = (
+                "Request [Failed], Request Value is [outside of limit]"
+            )
         return response
 
     def req_joint(self, request, response):
@@ -114,12 +132,23 @@ class RBRobotROS2Bridge:
         acc = request.acc
 
         if self.is_in_jointlimit_deg(jointReq):
-            cobot.MoveJ(jointReq[0], jointReq[1], jointReq[2], jointReq[3], jointReq[4], jointReq[5], spd, acc)
+            cobot.MoveJ(
+                jointReq[0],
+                jointReq[1],
+                jointReq[2],
+                jointReq[3],
+                jointReq[4],
+                jointReq[5],
+                spd,
+                acc,
+            )
             response.success = True
             response.message = "Request [Successful], Robot should be [MOVING]"
         else:
             response.success = False
-            response.message = "Request [Failed], Request Value is [outside of joint limit]"
+            response.message = (
+                "Request [Failed], Request Value is [outside of joint limit]"
+            )
         return response
 
     def req_joint_trajectory_goal_validate(self, goalReq):
@@ -144,7 +173,9 @@ class RBRobotROS2Bridge:
         return GoalResponse.ACCEPT
 
     def req_joint_trajectory_goal_cancel(self, goalHandle: ServerGoalHandle):
-        return CancelResponse.REJECT # ACCEPT # TODO : check for different situation
+        return (
+            CancelResponse.REJECT
+        )  # ACCEPT # TODO : check for different situation
 
     def req_joint_trajectory_goal_execute(self, goalHandle: ServerGoalHandle):
         req = goalHandle.request.jntseq.points
@@ -155,7 +186,14 @@ class RBRobotROS2Bridge:
         cobot.MoveJB_Clear()
         for jntpoint in req:
             position = np.rad2deg(jntpoint.positions)
-            cobot.MoveJB_Add(position[0], position[1], position[2], position[3], position[4], position[5])
+            cobot.MoveJB_Add(
+                position[0],
+                position[1],
+                position[2],
+                position[3],
+                position[4],
+                position[5],
+            )
         cobot.MoveJB_Run(spd, acc)
 
         # check current progress and keep update
@@ -205,7 +243,9 @@ class RBRobotROS2Bridge:
         return GoalResponse.ACCEPT
 
     def req_tcp_trajectory_goal_cancel(self, goalHandle: ServerGoalHandle):
-        return CancelResponse.REJECT # ACCEPT # TODO : check for different situation
+        return (
+            CancelResponse.REJECT
+        )  # ACCEPT # TODO : check for different situation
 
     def req_tcp_trajectory_goal_execute(self, goalHandle: ServerGoalHandle):
         tcppose = goalHandle.request.tcpseq

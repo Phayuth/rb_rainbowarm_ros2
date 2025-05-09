@@ -11,11 +11,11 @@ from rb_interfaces.srv import ReqTcp
 class TCPCtrlCall(Node):
 
     def __init__(self):
-        super().__init__('tcp_call')
+        super().__init__("tcp_call")
 
-        self.tcpctrl = self.create_client(ReqTcp, 'req_tcp')
+        self.tcpctrl = self.create_client(ReqTcp, "req_tcp")
         while not self.tcpctrl.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('service not available, waiting again...')
+            self.get_logger().info("service not available, waiting again...")
 
         self.tcpHome = [0.0, -265.70, 326.49, 174.00, -1.04, -180.0]  # xyzrpy
         self.tcpPreStamped = [0.0, -391.81, 214.97, 177.31, -1.04, 179.94]
@@ -29,7 +29,7 @@ class TCPCtrlCall(Node):
         ry = self.tcpPreStamped[4]
         rz = self.tcpPreStamped[5]
         r = np.array([rx, ry, rz])
-        rpy = R.from_euler('zyx', r, degrees=True)
+        rpy = R.from_euler("zyx", r, degrees=True)
         q = rpy.as_quat()
 
         req = ReqTcp.Request()
@@ -52,14 +52,16 @@ def main(args=None):
             try:
                 response = client.future.result()
             except Exception as e:
-                client.get_logger().info(f'Service call failed {e}')
+                client.get_logger().info(f"Service call failed {e}")
             else:
-                client.get_logger().info(f'Request is {response.success} with message {response.message}')
+                client.get_logger().info(
+                    f"Request is {response.success} with message {response.message}"
+                )
             break
 
     client.destroy_node()
     rclpy.shutdown()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

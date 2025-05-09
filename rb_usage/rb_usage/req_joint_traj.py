@@ -25,7 +25,14 @@ class JointTrajectoryReq(Node):
         goalMsg = ReqJntTraj.Goal()
 
         traj = JointTrajectory()
-        traj.joint_names = ["base", "shoulder", "elbow", "wrist1", "wrist2", "wrist3"]
+        traj.joint_names = [
+            "base",
+            "shoulder",
+            "elbow",
+            "wrist1",
+            "wrist2",
+            "wrist3",
+        ]
         for p in self.waypoint:
             point = JointTrajectoryPoint()
             point.positions = p
@@ -36,7 +43,9 @@ class JointTrajectoryReq(Node):
         goalMsg.acc = 1.0
 
         self.act.wait_for_server()
-        self.sendGoalFuture = self.act.send_goal_async(goalMsg, feedback_callback=self.feedback_callback)
+        self.sendGoalFuture = self.act.send_goal_async(
+            goalMsg, feedback_callback=self.feedback_callback
+        )
         self.sendGoalFuture.add_done_callback(self.goal_response_callback)
 
     def send_cancel(self):

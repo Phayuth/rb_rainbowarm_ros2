@@ -7,15 +7,22 @@ from rb_interfaces.srv import ReqJnt
 class JointCtrlCall(Node):
 
     def __init__(self):
-        super().__init__('jnt_call')
+        super().__init__("jnt_call")
 
-        self.jntctrl = self.create_client(ReqJnt, 'req_jnt')
+        self.jntctrl = self.create_client(ReqJnt, "req_jnt")
         while not self.jntctrl.wait_for_service(timeout_sec=1.0):
-            self.get_logger().info('service not available, waiting again...')
+            self.get_logger().info("service not available, waiting again...")
 
     def send_request(self):
         req = ReqJnt.Request()
-        req.jntstate.position = [-1.5707963267948966, -0.5235987755982988, 2.2689280275926285, -0.8726646259971648, 1.5707963267948966, 0.0]
+        req.jntstate.position = [
+            -1.5707963267948966,
+            -0.5235987755982988,
+            2.2689280275926285,
+            -0.8726646259971648,
+            1.5707963267948966,
+            0.0,
+        ]
         req.spd = 1.0
         req.acc = 5.0
         self.future = self.jntctrl.call_async(req)
@@ -32,14 +39,16 @@ def main(args=None):
             try:
                 response = client.future.result()
             except Exception as e:
-                client.get_logger().info(f'Service call failed {e}')
+                client.get_logger().info(f"Service call failed {e}")
             else:
-                client.get_logger().info(f'Request is {response.success} with message {response.message}')
+                client.get_logger().info(
+                    f"Request is {response.success} with message {response.message}"
+                )
             break
 
     client.destroy_node()
     rclpy.shutdown()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
